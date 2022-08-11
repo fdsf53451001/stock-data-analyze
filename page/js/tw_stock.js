@@ -5,7 +5,7 @@ let tw_stock_list = []
 function update_TWStockList(){
     $.ajax({
         type: "GET",
-        url: "http://localhost:5000/api?type=TWStockList",
+        url: backend_url+"api?type=TWStockList",
         dataType: "json",
         success: function (response) {
             tw_stock_list = response;

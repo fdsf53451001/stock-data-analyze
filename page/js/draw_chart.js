@@ -62,7 +62,7 @@ function update_chart_name(chart_num,name){
 function update_ChartDataFormat(){
     $.ajax({
         type: "GET",
-        url: "http://localhost:5000/api?type=ChartDataFormat",
+        url: backend_url+"api?type=ChartDataFormat",
         dataType: "json",
         success: function (response) {
             data_format = response;
@@ -78,7 +78,7 @@ function update_chart(id,type,name,period,density){
     console.log('update chart',id,type,name,period,density)
     $.ajax({
         type: "GET",
-        url: "http://localhost:5000/api?type="+type+"&name="+name+"&period="+period+"&density="+density,
+        url: backend_url+"api?type="+type+"&name="+name+"&period="+period+"&density="+density,
         dataType: "json",
         success: function (response) {
             data = response;
