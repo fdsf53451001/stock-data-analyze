@@ -1,0 +1,28 @@
+.chart-card{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 400px;
+    /* margin-left: 1px; */
+    /* margin-right: 1px; */
+}
+
+.chart-title{
+    margin: 15px 10px;
+}
+
+.chart-button-group{
+    margin-left: 10px;
+    padding: 0px 0px;
+    margin-bottom: 5px;
+    width: 200px;
+    height: 30px;
+}
+
+.chart-button-word{
+    font-size: smaller;
+}
+
+.chart-item{
+    width: 100%;
+    aspect-ratio : 1/1;
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Stock Analysis</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+			integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+			crossorigin="anonymous"></script>
+            
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/chart.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar-->
+        <div class="border-end bg-white" id="sidebar-wrapper">
+            <div class="sidebar-heading border-bottom bg-light">Stock Analysis</div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="index.html">美股指標</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="tw_stock.html">台股</a>
+                <!-- <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Overview</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a> -->
+            </div>
+        </div>
+        <!-- Page content wrapper-->
+        <div id="page-content-wrapper">
+            <!-- Top navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <div class="container-fluid">
+                    <button class="btn btn-primary" id="sidebarToggle">&lt</button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation"><span
+                            class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                            <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#!">Action</a>
+                                    <a class="dropdown-item" href="#!">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#!">Something else here</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Page content-->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="card chart-card">
+                            <h6 class="chart-title" id="chart-title-0">null</h6>
+                            <div class="row">
+                                <div style="width: 12px; padding: 0px;"></div>
+                                <div class="btn-group chart-button-group" role="group" aria-label="Duration-0">
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Duration-0" id="btn-duration-1d-0" autocomplete="off" onclick="update_chart_period(0,'1d')">
+                                    <label class="btn btn-outline-primary chart-button-word" for="btn-duration-1d-0">天</label>
+                                
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Duration-0" id="btn-duration-1w-0" autocomplete="off" onclick="update_chart_period(0,'1w')">
+                                    <label class="btn btn-outline-primary chart-button-word" for="btn-duration-1w-0">週</label>
+                                
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Duration-0" id="btn-duration-1m-0" autocomplete="off" onclick="update_chart_period(0,'1m')" checked>
+                                    <label class="btn btn-outline-primary chart-button-word" for="btn-duration-1m-0">月</label>
+
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Duration-0" id="btn-duration-1y-0" autocomplete="off" onclick="update_chart_period(0,'1y')">
+                                    <label class="btn btn-outline-primary chart-button-word" for="btn-duration-1y-0">年</label>
+
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Duration-0" id="btn-duration-all-0" autocomplete="off" onclick="update_chart_period(0,'all')">
+                                    <label class="btn btn-outline-primary chart-button-word" for="btn-duration-all-0">全</label>
+                                </div>
+                                <div class="btn-group chart-button-group" role="group" aria-label="Density-0">
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Density-0" id="btn-density-1d-0" autocomplete="off" checked onclick="update_chart_density(0,'1d')">
+                                    <label class="btn btn-outline-danger chart-button-word" for="btn-density-1d-0">天</label>
+                                
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Density-0" id="btn-density-1w-0" autocomplete="off" onclick="update_chart_density(0,'1w')">
+                                    <label class="btn btn-outline-danger chart-button-word" for="btn-density-1w-0">週</label>
+                                
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Density-0" id="btn-density-1m-0" autocomplete="off" onclick="update_chart_density(0,'1m')">
+                                    <label class="btn btn-outline-danger chart-button-word" for="btn-density-1m-0">月</label>
+
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Density-0" id="btn-density-1y-0" autocomplete="off" onclick="update_chart_density(0,'1y')">
+                                    <label class="btn btn-outline-danger chart-button-word" for="btn-density-1y-0">年</label>
+                                </div>
+                            </div>
+                            <canvas class="chart-item" id="Chart-0"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="card chart-card">
+                            <h6 class="chart-title" id="chart-title-1">null</h6>
+                            <div class="row">
+                                <div style="width: 12px; padding: 0px;"></div>
+                                <div class="btn-group chart-button-group" role="group" aria-label="Duration-1">
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Duration-1" id="btn-duration-1d-1" autocomplete="off" onclick="update_chart_period(1,'1d')">
+                                    <label class="btn btn-outline-primary chart-button-word" for="btn-duration-1d-1">天</label>
+                                
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Duration-1" id="btn-duration-1w-1" autocomplete="off" onclick="update_chart_period(1,'1w')">
+                                    <label class="btn btn-outline-primary chart-button-word" for="btn-duration-1w-1">週</label>
+                                
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Duration-1" id="btn-duration-1m-1" autocomplete="off" onclick="update_chart_period(1,'1m')" checked>
+                                    <label class="btn btn-outline-primary chart-button-word" for="btn-duration-1m-1">月</label>
+
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Duration-1" id="btn-duration-1y-1" autocomplete="off" onclick="update_chart_period(1,'1y')">
+                                    <label class="btn btn-outline-primary chart-button-word" for="btn-duration-1y-1">年</label>
+
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Duration-1" id="btn-duration-all-1" autocomplete="off" onclick="update_chart_period(1,'all')">
+                                    <label class="btn btn-outline-primary chart-button-word" for="btn-duration-all-1">全</label>
+                                </div>
+                                <div class="btn-group chart-button-group" role="group" aria-label="Density-1">
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Density-1" id="btn-density-1d-1" autocomplete="off" checked onclick="update_chart_density(1,'1d')">
+                                    <label class="btn btn-outline-danger chart-button-word" for="btn-density-1d-1">天</label>
+                                
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Density-1" id="btn-density-1w-1" autocomplete="off" onclick="update_chart_density(1,'1w')">
+                                    <label class="btn btn-outline-danger chart-button-word" for="btn-density-1w-1">週</label>
+                                
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Density-1" id="btn-density-1m-1" autocomplete="off" onclick="update_chart_density(1,'1m')">
+                                    <label class="btn btn-outline-danger chart-button-word" for="btn-density-1m-1">月</label>
+
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Density-1" id="btn-density-1y-1" autocomplete="off" onclick="update_chart_density(1,'1y')">
+                                    <label class="btn btn-outline-danger chart-button-word" for="btn-density-1y-1">年</label>
+                                </div>
+                            </div>
+                            <canvas class="chart-item" id="Chart-1"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="card chart-card">
+                            <h6 class="chart-title" id="chart-title-2">null</h6>
+                            <div class="row">
+                                <div style="width: 12px; padding: 0px;"></div>
+                                <div class="btn-group chart-button-group" role="group" aria-label="Duration-2">
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Duration-2" id="btn-duration-1d-2" autocomplete="off" onclick="update_chart_period(2,'1d')">
+                                    <label class="btn btn-outline-primary chart-button-word" for="btn-duration-1d-2">天</label>
+                                
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Duration-2" id="btn-duration-1w-2" autocomplete="off" onclick="update_chart_period(2,'1w')">
+                                    <label class="btn btn-outline-primary chart-button-word" for="btn-duration-1w-2">週</label>
+                                
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Duration-2" id="btn-duration-1m-2" autocomplete="off" onclick="update_chart_period(2,'1m')" checked>
+                                    <label class="btn btn-outline-primary chart-button-word" for="btn-duration-1m-2">月</label>
+
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Duration-2" id="btn-duration-1y-2" autocomplete="off" onclick="update_chart_period(2,'1y')">
+                                    <label class="btn btn-outline-primary chart-button-word" for="btn-duration-1y-2">年</label>
+
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Duration-2" id="btn-duration-all-2" autocomplete="off" onclick="update_chart_period(2,'all')">
+                                    <label class="btn btn-outline-primary chart-button-word" for="btn-duration-all-2">全</label>
+                                </div>
+                                <div class="btn-group chart-button-group" role="group" aria-label="Density-2">
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Density-2" id="btn-density-1d-2" autocomplete="off" checked onclick="update_chart_density(2,'1d')">
+                                    <label class="btn btn-outline-danger chart-button-word" for="btn-density-1d-2">天</label>
+                                
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Density-2" id="btn-density-1w-2" autocomplete="off" onclick="update_chart_density(2,'1w')">
+                                    <label class="btn btn-outline-danger chart-button-word" for="btn-density-1w-2">週</label>
+                                
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Density-2" id="btn-density-1m-2" autocomplete="off" onclick="update_chart_density(2,'1m')">
+                                    <label class="btn btn-outline-danger chart-button-word" for="btn-density-1m-2">月</label>
+
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Density-2" id="btn-density-1y-2" autocomplete="off" onclick="update_chart_density(2,'1y')">
+                                    <label class="btn btn-outline-danger chart-button-word" for="btn-density-1y-2">年</label>
+                                </div>
+                            </div>
+                            <canvas class="chart-item" id="Chart-2"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <script src="js/draw_chart.js"></script>
+    <script src="js/us_stock.js"></script>
+</body>
+
+</html>
