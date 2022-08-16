@@ -25,4 +25,4 @@ window.addEventListener('DOMContentLoaded', event => {
 
 });
 
-backend_url = 'http://localhost:5000/'
+backend_url = 'https://1c27-61-218-122-229.jp.ngrok.io/'
