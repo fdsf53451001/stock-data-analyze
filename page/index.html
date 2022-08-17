@@ -191,6 +191,48 @@
                             <canvas class="chart-item" id="Chart-2" height="60%" width="100%"></canvas>
                         </div>
                     </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="card chart-card">
+                            <div style="display:flex">
+                                <h6 class="chart-title" id="chart-title-3">null</h6>
+                                <img class="chart-status-img" id="chart-trend-img-3" src="assets/good.png"></img>
+                                <h6 class="chart-title" id="chart-trend-3"></h6>
+                            </div>
+                            <div class="row">
+                                <div style="width: 12px; padding: 0px;"></div>
+                                <div class="btn-group chart-button-group" role="group" aria-label="Duration-3">
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Duration-3" id="btn-duration-1d-3" autocomplete="off" onclick="update_chart_period(3,'1d')">
+                                    <label class="btn btn-outline-primary chart-button-word" for="btn-duration-1d-3">天</label>
+                                
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Duration-3" id="btn-duration-1w-3" autocomplete="off" onclick="update_chart_period(3,'1w')">
+                                    <label class="btn btn-outline-primary chart-button-word" for="btn-duration-1w-3">週</label>
+                                
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Duration-3" id="btn-duration-1m-3" autocomplete="off" onclick="update_chart_period(3,'1m')" checked>
+                                    <label class="btn btn-outline-primary chart-button-word" for="btn-duration-1m-3">月</label>
+
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Duration-3" id="btn-duration-1y-3" autocomplete="off" onclick="update_chart_period(3,'1y')">
+                                    <label class="btn btn-outline-primary chart-button-word" for="btn-duration-1y-3">年</label>
+
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Duration-3" id="btn-duration-all-3" autocomplete="off" onclick="update_chart_period(3,'all')">
+                                    <label class="btn btn-outline-primary chart-button-word" for="btn-duration-all-3">全</label>
+                                </div>
+                                <div class="btn-group chart-button-group" role="group" aria-label="Density-3">
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Density-3" id="btn-density-1d-3" autocomplete="off" checked onclick="update_chart_density(3,'1d')">
+                                    <label class="btn btn-outline-danger chart-button-word" for="btn-density-1d-3">天</label>
+                                
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Density-3" id="btn-density-1w-3" autocomplete="off" onclick="update_chart_density(3,'1w')">
+                                    <label class="btn btn-outline-danger chart-button-word" for="btn-density-1w-3">週</label>
+                                
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Density-3" id="btn-density-1m-3" autocomplete="off" onclick="update_chart_density(3,'1m')">
+                                    <label class="btn btn-outline-danger chart-button-word" for="btn-density-1m-3">月</label>
+
+                                    <input type="radio" class="btn-check chart-btn-group-0" name="Density-3" id="btn-density-1y-3" autocomplete="off" onclick="update_chart_density(3,'1y')">
+                                    <label class="btn btn-outline-danger chart-button-word" for="btn-density-1y-3">年</label>
+                                </div>
+                            </div>
+                            <canvas class="chart-item" id="Chart-3" height="60%" width="100%"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

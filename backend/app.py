@@ -3,6 +3,7 @@ from flask_cors import CORS
 import pandas as pd
 import json
 from data import Dataset
+from wsgiref.simple_server import make_server
 
 dataset = None
 app = Flask(__name__)
@@ -79,4 +80,8 @@ def del_ChartDataFormat():
 
 if __name__ == "__main__":
     dataset = Dataset()
-    app.run(debug=True)
+    server = make_server('0.0.0.0',5000,app)
+    server.serve_forever()
+    app.run()
+    # serve(app, host="0.0.0.0", port=5000)
+    # app.run(debug=False,host="0.0.0.0")

@@ -84,7 +84,9 @@ function update_chart(chart_num,type,name,period,density){
         success: function (response) {
             data = response;
             draw(id,data)
-            set_price_trend(chart_num,data)
+            if(density=='1d'){
+                set_price_trend(chart_num,data)
+            }
         },
         error: function (thrownError) {
             console.log(thrownError);
