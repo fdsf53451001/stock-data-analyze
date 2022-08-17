@@ -23,7 +23,7 @@ function update_chart_period(chart_num,period){
     // $('#btn-density-'+default_density+'-'+chart_num).attr('checked')
     // change density here
     console.log(chart_info[chart_id])
-    update_chart(chart_id,page_type,chart_info[chart_id]['name'],chart_info[chart_id]['period'],chart_info[chart_id]['density'])
+    update_chart(chart_num,page_type,chart_info[chart_id]['name'],chart_info[chart_id]['period'],chart_info[chart_id]['density'])
 
     if(data_format[period]!=undefined){
         let options = data_format[period]['disabled']
@@ -48,13 +48,13 @@ function update_chart_period(chart_num,period){
 function update_chart_density(chart_num,density){
     let chart_id = Object.keys(chart_info)[chart_num]
     chart_info[chart_id]['density'] = density
-    update_chart(chart_id,page_type,chart_info[chart_id]['name'],chart_info[chart_id]['period'],chart_info[chart_id]['density'])
+    update_chart(chart_num,page_type,chart_info[chart_id]['name'],chart_info[chart_id]['period'],chart_info[chart_id]['density'])
 }
 
 function update_chart_name(chart_num,name){
     let chart_id = Object.keys(chart_info)[chart_num]
     chart_info[chart_id]['name'] = name
-    update_chart(chart_id,page_type,chart_info[chart_id]['name'],chart_info[chart_id]['period'],chart_info[chart_id]['density'])
+    update_chart(chart_num,page_type,chart_info[chart_id]['name'],chart_info[chart_id]['period'],chart_info[chart_id]['density'])
     $('#chart-title-'+chart_num).html(name)
     $('#chart-name-btn-tittle').html(name)
 }
@@ -74,7 +74,8 @@ function update_ChartDataFormat(){
     });
 }
 
-function update_chart(id,type,name,period,density){
+function update_chart(chart_num,type,name,period,density){
+    let id = Object.keys(chart_info)[chart_num]
     console.log('update chart',id,type,name,period,density)
     $.ajax({
         type: "GET",
@@ -83,12 +84,45 @@ function update_chart(id,type,name,period,density){
         success: function (response) {
             data = response;
             draw(id,data)
+            set_price_trend(chart_num,data)
         },
         error: function (thrownError) {
             console.log(thrownError);
             alert(thrownError);
         }
     });
+}
+
+function roundDecimal(val, precision) {
+    return Math.round(Math.round(val * Math.pow(10, (precision || 0) + 1)) / 10) / Math.pow(10, (precision || 0));
+}
+
+function set_price_trend(chart_num,chart_data){
+    let close_data = chart_data.map(x=>x.Close)
+    if(close_data.length >= 2){
+        let change = (close_data[close_data.length-1]-close_data[close_data.length-2])/close_data[close_data.length-2]*100
+        change = roundDecimal(change,2)
+        if(change>0){
+            $('#chart-trend-img-'+chart_num).attr("src","assets/good.png")
+        }else{
+            $('#chart-trend-img-'+chart_num).attr("src","assets/bad.png")
+        }
+
+        $('#chart-trend-'+chart_num).html('昨日漲幅：'+change+'%')
+
+        if(close_data.length >= 7){
+            data_7 = close_data.slice(close_data.length-7)
+            let sum = 0;
+            for (let number of data_7) {
+                sum += number;
+            }
+            average = sum / data_7.length;
+            let change = (data_7[data_7.length-1]-average)/average*100
+            change = roundDecimal(change,2)
+            $('#chart-trend-'+chart_num).append('，現位於本週：'+change+'%')
+        }
+    }
+    
 }
 
 function draw(id,chart_data){
