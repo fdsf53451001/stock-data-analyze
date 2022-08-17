@@ -24,4 +24,4 @@ class YFData():
 
 if __name__ == '__main__':
     yfdata = YFData()
-    yfdata.load('USStockPrice','DX-Y.NYB')
+    yfdata.load('USStockPrice','^DJI')
