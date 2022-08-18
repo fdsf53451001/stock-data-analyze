@@ -88,7 +88,29 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-12">
                             <div class="card chart-card">
-                                <h6 class="chart-title">分析</h6>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h6 class="chart-title">2330.TSMC</h6>
+                                    </div>
+                                    <div class="col-6"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="row chart-status-graph-box">
+                                            <canvas id="Chart-state-0"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <h6>相關指標 : </h6>
+                                        <br/>
+                                        <h6>走勢 ...</h6>
+                                        <h6>新聞 ...</h6>
+                                        <h6>其他 ...</h6>
+                                    </div>
+                                </div>
+                                <!-- <div class="row chart-status-graph-box">
+                                    <canvas id="Chart-state-0"></canvas>
+                                </div> -->
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-12">
@@ -130,12 +152,47 @@
                                         <label class="btn btn-outline-danger chart-button-word" id="btn-d-density-1y-0" for="btn-density-1y-0">年</label>
                                     </div>
                                 </div>
-                                <canvas class="chart-item" id="Chart-0" height="60%" width="100%"></canvas>
+                                <div class="row chart-item-box">
+                                    <canvas class="chart-item" id="Chart-0"></canvas>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-12">
                             <div class="card chart-card">
-                                <h6 class="chart-title">新聞</h6>
+                                <h6 class="chart-title">重訊\新聞</h6>
+                                <div class="row card-news-list">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                            <th scope="col">Time</th>
+                                            <th scope="col">Subject</th>
+                                            <th scope="col">Predict</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">2022-08-18 04:07</th>
+                                                <td><a href="https://tw.news.yahoo.com/%E7%9B%B4%E6%92%AD%EF%BC%8F%E5%9C%8B%E5%85%A7%E6%9C%80%E6%96%B0%E7%96%AB%E6%83%85%E7%99%BC%E5%B1%95-%E6%8C%87%E6%8F%AE%E4%B8%AD%E5%BF%83%E4%B8%8B%E5%8D%88-2-%E6%99%82%E8%AA%AA%E6%98%8E-023136575.html">新冠肺炎增2萬3088例本土、34人死亡 添111例中重症含2童MIS-C</a></td>
+                                                <td>positive</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2022-08-18 04:07</th>
+                                                <td><a href="https://tw.news.yahoo.com/%E7%9B%B4%E6%92%AD%EF%BC%8F%E5%9C%8B%E5%85%A7%E6%9C%80%E6%96%B0%E7%96%AB%E6%83%85%E7%99%BC%E5%B1%95-%E6%8C%87%E6%8F%AE%E4%B8%AD%E5%BF%83%E4%B8%8B%E5%8D%88-2-%E6%99%82%E8%AA%AA%E6%98%8E-023136575.html">新冠肺炎增2萬3088例本土、34人死亡 添111例中重症含2童MIS-C</a></td>
+                                                <td>positive</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2022-08-18 04:07</th>
+                                                <td><a href="https://tw.news.yahoo.com/%E7%9B%B4%E6%92%AD%EF%BC%8F%E5%9C%8B%E5%85%A7%E6%9C%80%E6%96%B0%E7%96%AB%E6%83%85%E7%99%BC%E5%B1%95-%E6%8C%87%E6%8F%AE%E4%B8%AD%E5%BF%83%E4%B8%8B%E5%8D%88-2-%E6%99%82%E8%AA%AA%E6%98%8E-023136575.html">新冠肺炎增2萬3088例本土、34人死亡 添111例中重症含2童MIS-C</a></td>
+                                                <td>positive</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2022-08-18 04:07</th>
+                                                <td><a href="https://tw.news.yahoo.com/%E7%9B%B4%E6%92%AD%EF%BC%8F%E5%9C%8B%E5%85%A7%E6%9C%80%E6%96%B0%E7%96%AB%E6%83%85%E7%99%BC%E5%B1%95-%E6%8C%87%E6%8F%AE%E4%B8%AD%E5%BF%83%E4%B8%8B%E5%8D%88-2-%E6%99%82%E8%AA%AA%E6%98%8E-023136575.html">新冠肺炎增2萬3088例本土、34人死亡 添111例中重症含2童MIS-C</a></td>
+                                                <td>positive</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>

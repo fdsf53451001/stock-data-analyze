@@ -121,7 +121,19 @@ function set_price_trend(chart_num,chart_data){
             average = sum / data_7.length;
             let change = (data_7[data_7.length-1]-average)/average*100
             change = roundDecimal(change,2)
-            $('#chart-trend-'+chart_num).append('，現位於本週：'+change+'%')
+            $('#chart-trend-'+chart_num).append('，本週：'+change+'%')
+        }
+
+        if(close_data.length >= 30){
+            data_30 = close_data.slice(close_data.length-30)
+            let sum = 0;
+            for (let number of data_30) {
+                sum += number;
+            }
+            average = sum / data_30.length;
+            let change = (data_30[data_30.length-1]-average)/average*100
+            change = roundDecimal(change,2)
+            $('#chart-trend-'+chart_num).append('，本月：'+change+'%')
         }
     }
     
@@ -137,7 +149,7 @@ function draw(id,chart_data){
     var chart = new Chart(ctx, {
         type: 'line',
         data: {
-        labels: chart_data.map(x=>x.Date.slice(0,10)),
+        labels: chart_data.map(x=>x.Date.slice(2,10)),
         datasets: [{
             label: 'close',
             data: chart_data.map(x=>x.Close),
@@ -163,7 +175,8 @@ function draw(id,chart_data){
             legend:{
                 display: false                 // 不顯示圖例
             },
-            responsive: true
+            responsive: true,
+            maintainAspectRatio: false
         }
     });
     chart_object[id] = chart;
