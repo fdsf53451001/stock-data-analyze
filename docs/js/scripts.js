@@ -25,4 +25,4 @@ window.addEventListener('DOMContentLoaded', event => {
 
 });
 
-backend_url = 'http://unknownddsm.tplinkdns.com:5000/'
+backend_url = 'http://120.126.16.31:5000/'
